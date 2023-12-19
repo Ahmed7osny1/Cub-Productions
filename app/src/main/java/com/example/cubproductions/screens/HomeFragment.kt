@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.Navigation
+import com.example.cubproductions.R
 import com.example.cubproductions.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -23,9 +24,33 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//
-//    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.fashonCard.setOnClickListener {
+            Navigation.findNavController(view).navigate(
+                R.id.action_homeFragment_to_fashonFragment
+            )
+        }
+
+        binding.foodCard.setOnClickListener {
+            Navigation.findNavController(view).navigate(
+                R.id.action_homeFragment_to_foodFragment
+            )
+        }
+
+        binding.weedingCard.setOnClickListener {
+            Navigation.findNavController(view).navigate(
+                R.id.action_homeFragment_to_weedingFragment
+            )
+        }
+
+        binding.productCard.setOnClickListener {
+            Navigation.findNavController(view).navigate(
+                R.id.action_homeFragment_to_productFragment
+            )
+        }
+
+    }
+
 }

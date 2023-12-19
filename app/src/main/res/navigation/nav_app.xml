@@ -16,6 +16,18 @@
         <action
             android:id="@+id/action_homeFragment_to_bookingFragment"
             app:destination="@id/bookingFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_fashonFragment"
+            app:destination="@id/fashonFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_foodFragment"
+            app:destination="@id/foodFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_weedingFragment"
+            app:destination="@id/weedingFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_productFragment"
+            app:destination="@id/productFragment" />
     </fragment>
     <fragment
         android:id="@+id/bookingFragment"
@@ -33,4 +45,24 @@
         android:name="com.example.cubproductions.screens.BookedFragment"
         android:label="fragment_booked"
         tools:layout="@layout/fragment_booked" />
+    <fragment
+        android:id="@+id/fashonFragment"
+        android:name="com.example.cubproductions.screens.FashonFragment"
+        android:label="fragment_fashon"
+        tools:layout="@layout/fragment_fashon" />
+    <fragment
+        android:id="@+id/foodFragment"
+        android:name="com.example.cubproductions.screens.FoodFragment"
+        android:label="fragment_food"
+        tools:layout="@layout/fragment_food" />
+    <fragment
+        android:id="@+id/productFragment"
+        android:name="com.example.cubproductions.screens.ProductFragment"
+        android:label="fragment_product"
+        tools:layout="@layout/fragment_product" />
+    <fragment
+        android:id="@+id/weedingFragment"
+        android:name="com.example.cubproductions.screens.WeedingFragment"
+        android:label="fragment_weeding"
+        tools:layout="@layout/fragment_weeding" />
 </navigation>

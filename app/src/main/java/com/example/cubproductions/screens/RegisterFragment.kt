@@ -1,6 +1,8 @@
 package com.example.cubproductions.screens
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,10 +11,14 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.cubproductions.R
 import com.example.cubproductions.databinding.FragmentRegisterBinding
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 
 class RegisterFragment : Fragment() {
 
     private lateinit var binding: FragmentRegisterBinding
+
     private lateinit var firstName: String
     private lateinit var lastName: String
     private lateinit var email: String
@@ -20,12 +26,16 @@ class RegisterFragment : Fragment() {
     private lateinit var confirmPassword: String
     private lateinit var phone: String
 
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentRegisterBinding.inflate(inflater, container, false)
+
+        auth = Firebase.auth
 
         return binding.root
     }
@@ -36,9 +46,31 @@ class RegisterFragment : Fragment() {
         binding.signup.setOnClickListener {
 
             if (createAccount()) {
-                Navigation.findNavController(requireView()).navigate(
-                    R.id.action_registerFragment_to_loginFragment
-                )
+
+                auth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(requireActivity()) { task ->
+                        if (task.isSuccessful) {
+                            // Sign in success, update UI with the signed-in user's information
+                            val user = auth.currentUser
+                            Log.d(TAG, "createUserWithEmail:success $user")
+
+                            Toast.makeText(requireContext(),"Register successfully",
+                                Toast.LENGTH_LONG).show()
+
+                            Navigation.findNavController(requireView()).navigate(
+                                R.id.action_registerFragment_to_loginFragment
+                            )
+
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.d(TAG, "createUserWithEmail:failure", task.exception)
+                            Toast.makeText(
+                                requireContext(),
+                                "Register failed.",
+                                Toast.LENGTH_SHORT,
+                            ).show()
+                        }
+                    }
             }
         }
 

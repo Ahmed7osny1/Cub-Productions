@@ -1,7 +1,9 @@
 package com.example.cubproductions.screens
 
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,12 +12,17 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.cubproductions.R
 import com.example.cubproductions.databinding.FragmentLoginBinding
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 
 class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
     private lateinit var email: String
     private lateinit var password: String
+
+    private lateinit var auth: FirebaseAuth
 
 
     override fun onCreateView(
@@ -24,6 +31,8 @@ class LoginFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentLoginBinding.inflate(inflater, container, false)
+
+        auth = Firebase.auth
 
         return binding.root
     }
@@ -35,10 +44,28 @@ class LoginFragment : Fragment() {
         binding.logIn.setOnClickListener {
 
             if (checkLogin()) {
-                loginFinished("login")
-                Navigation.findNavController(requireView()).navigate(
-                    R.id.action_loginFragment_to_enterActivity
-                )
+                auth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(requireActivity()) { task ->
+                        if (task.isSuccessful) {
+                            // Sign in success, update UI with the signed-in user's information
+                            val user = auth.currentUser
+                            Log.d("login", "signInWithEmail:success ${user?.email}")
+
+                            loginFinished("$user")
+                            Navigation.findNavController(requireView()).navigate(
+                                R.id.action_loginFragment_to_enterActivity
+                            )
+
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.d(TAG, "signInWithEmail:failure", task.exception)
+                            Toast.makeText(
+                                requireContext(),
+                                "Login failed, Email or Password not correct!",
+                                Toast.LENGTH_SHORT,
+                            ).show()
+                        }
+                    }
             }
         }
 

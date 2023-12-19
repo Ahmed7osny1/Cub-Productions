@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
 
 
 class EnterActivity : AppCompatActivity() {
@@ -30,6 +32,7 @@ class EnterActivity : AppCompatActivity() {
         bottomNavigation.menu.findItem(R.id.logout)
             .setOnMenuItemClickListener { menuItem ->
 
+                Firebase.auth.signOut()
                 // remove token from shared prefs
                 prefsEditor.remove("token")
                 prefsEditor.apply()
