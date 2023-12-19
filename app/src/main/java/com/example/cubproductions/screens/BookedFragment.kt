@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.cubproductions.adapter.BookingAdatpter
 import com.example.cubproductions.data.UserBooking
 import com.example.cubproductions.databinding.FragmentBookedBinding
@@ -55,7 +56,8 @@ class BookedFragment : Fragment() {
                 val rvAdapter = BookingAdatpter(bookingList)
                 binding.BookedRecycleView.adapter = rvAdapter
                 binding.BookedRecycleView.layoutManager =
-                    LinearLayoutManager(requireContext())
+                    StaggeredGridLayoutManager(1,
+                        LinearLayoutManager.VERTICAL)
             }
 
             override fun onCancelled(error: DatabaseError) {

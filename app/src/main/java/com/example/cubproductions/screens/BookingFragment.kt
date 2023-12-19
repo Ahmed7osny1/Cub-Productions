@@ -65,7 +65,7 @@ class BookingFragment : Fragment() {
                 database.child(userId).setValue(booking)
 
                 Toast.makeText(
-                    requireActivity(),
+                    requireContext(),
                     "Booked Successfully",
                     Toast.LENGTH_LONG
                 ).show()
