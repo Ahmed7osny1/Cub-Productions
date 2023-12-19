@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/enterapp"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.cubproductions.screens.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_onboardFragment"
+            app:destination="@id/onboardFragment"
+            app:popUpTo="@id/onboardFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_enterActivity"
+            app:destination="@id/enterActivity"
+            app:popUpTo="@id/enterActivity"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/onboardFragment"
+        android:name="com.example.cubproductions.screens.onboarding.OnboardFragment"
+        android:label="fragment_onboard"
+        tools:layout="@layout/fragment_onboard" >
+        <action
+            android:id="@+id/action_onboardFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.cubproductions.screens.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_enterActivity"
+            app:destination="@id/enterActivity"
+            app:popUpTo="@id/enterActivity"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.cubproductions.screens.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/enterActivity"
+        android:name="com.example.cubproductions.EnterActivity"
+        android:label="activity_enter"
+        tools:layout="@layout/activity_enter" />
+</navigation>

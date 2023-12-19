@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Cub Productions</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logo">Logo Image</string>
+    <string name="next">NEXT</string>
+    <string name="pass">Password</string>
+    <string name="login">Log in</string>
+    <string name="don_t_have_account">You don’t have account?\nRegister</string>
+    <string name="mail">Email</string>
+    <string name="pick">Pick Service</string>
+    <string name="onboardthree">Get Service Delivered</string>
+    <string name="onedesc">Browse our variety of services\nPick the one you needed</string>
+    <string name="threedesc">You can sit back and relax while the\nservice id being completed</string>
+    <string name="onboardtwo">Great Services</string>
+    <string name="twodesc">You can book an appointment, food, and weeding</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="address">Address</string>
+    <string name="register">Register</string>
+    <string name="welcome">Hello there,</string>
+    <string name="back">Welcome back!</string>
+    <string name="have_account">You already have account?\nLogin</string>
+    <string name="cub_desc">"Production is a media production house that serves\nbusiness needs of advertising and media production\nwith a professional experts in every filed. \nwe will open you eye to all dimensions "</string>
+</resources>
